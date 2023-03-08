@@ -43,13 +43,18 @@ form {
 }
 
 .action-td {
+    justify-content: center;
     display: flex;
     gap: 0.5rem;
 }
 
+.action-th {
+    text-align: center;
+}
+
 .btn-back {
     position: absolute;
-    left: 2rem;
+    left: 3rem;
     top: 2rem;
 }
 
@@ -67,4 +72,31 @@ form {
 .form-title {
     text-align: center;
     margin-bottom: 2rem;
+}
+
+.margin-bot {
+    margin-bottom: 2rem;
+}
+
+.firma-th {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addFirma-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.addFirma-form>input {
+    width: 70%;
+}
+
+.addFirma-form>button {
+    width: 25%;
+}
+
+.top-space {
+    margin-top: 3rem;
 }

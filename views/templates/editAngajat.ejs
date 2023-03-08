@@ -1,8 +1,8 @@
 <% layout('boilerplate/layout.ejs') %>
-    <a class="btn btn-primary btn-back" href="/angajati">Back</a>
+    <a class="btn btn-primary btn-back" href="/firme/<%=idFirma%>">Back</a>
     <div class="form-wrapper">
         <h2 class="form-title">Edit Employee Data</h2>
-        <form action="/angajati/<%=angajat.id%>?_method=PUT" method="POST">
+        <form action="/angajati/<%=idFirma%>/<%=angajat._id%>?_method=PUT" method="POST">
             <input type="text" class="form-control" name="prenume" placeholder="First Name" value=<%=angajat.prenume%>
             minlength="3" required>
             <input type="text" class="form-control" name="nume" placeholder="Last Name" value=<%=angajat.nume %>
@@ -13,7 +13,9 @@
             <input type="number" class="form-control" name="salariu" placeholder="Salary" value=<%=angajat.salariu %>
             min="0"
             required>
-            <input type="date" class="form-control" name="data" placeholder="Date" value=<%=angajat.data %> required>
+            <input type="date" class="form-control" name="data" placeholder="Date" value=<%=angajat.data.getFullYear()
+                + "-" + ("0" + (angajat.data.getMonth() + 1)).slice(-2) + "-" + ("0" +
+                angajat.data.getDate()).slice(-2); %> required>
             <button class="btn btn-primary form-btn">Save</button>
         </form>
     </div>

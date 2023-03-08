@@ -1,13 +1,83 @@
 <% layout('boilerplate/layout.ejs') %>
     <a class="btn btn-primary btn-back" href="/firme">Back</a>
-    <div class="form-wrapper">
-        <h2 class="form-title">Edit Firma Data</h2>
-        <form action="/firme/<%=firma.id%>" method="POST">
-            <input type="text" class="form-control" name="prenume" placeholder="First Name">
-            <input type="text" class="form-control" name="nume" placeholder="Last Name">
-            <input type="email" class="form-control" name="email" placeholder="Email">
-            <input type="number" class="form-control" name="salariu" placeholder="Salary">
-            <input type="date" class="form-control" name="data" placeholder="Date">
-            <button class="btn btn-primary form-btn">Add</button>
-        </form>
+    <div class="app-wrapper">
+        <h1 class="app-title top-space">
+            <%= firma.nume %>
+        </h1>
+        <div class="firma">
+            <div class="firma-th margin-bot">
+                <div class="action-td">
+                    <a class=" btn btn-outline-secondary" href="/firme/<%=firma._id%>/add">Add Employee</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Edit Company Name
+                    </button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Edit Company</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/firme/<%=firma._id%>?_method=PUT" method="POST"
+                                        class="addFirma-form">
+                                        <input type="text" class="form-control" name="nume" value=<%=firma.nume%>
+                                        placeholder="Name"
+                                        minlength="6" required >
+                                        <button class="btn btn-primary">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Salary</th>
+                            <th>Date</th>
+                            <th class="action-th">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for(let angajat of firma.angajati) { %>
+                            <tr>
+                                <td>
+                                    <%= angajat.prenume %>
+                                </td>
+                                <td>
+                                    <%= angajat.nume %>
+                                </td>
+                                <td>
+                                    <%= angajat.email %>
+                                </td>
+                                <td>
+                                    <%= angajat.salariu %>$
+                                </td>
+                                <td>
+                                    <%= angajat.data.toLocaleDateString("en-GB") %>
+                                </td>
+                                <td class="action-td">
+                                    <a class="btn btn-outline-secondary"
+                                        href="/angajati/<%=firma._id%>/<%=angajat._id%>">Edit</a>
+                                    <form action="/angajati/<%=firma._id%>/<%=angajat._id%>?_method=DELETE"
+                                        method="POST">
+                                        <button class="btn btn-outline-secondary">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>

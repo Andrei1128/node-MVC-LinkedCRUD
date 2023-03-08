@@ -3,17 +3,13 @@ const router = express.Router();
 
 const {
   getAngajat,
-  getAngajati,
   updateAngajat,
   deleteAngajat,
-  addAngajat,
 } = require("../controllers/angajat");
 const { validateAngajat } = require("../middleware/validators");
 
-router.get("/", getAngajati);
-router.get("/:id", getAngajat);
-router.post("/", addAngajat);
-router.put("/:id", updateAngajat);
-router.delete("/:id", deleteAngajat);
+router.get("/:idFirma/:id", getAngajat);
+router.put("/:idFirma/:id", updateAngajat);
+router.delete("/:idFirma/:id", deleteAngajat);
 
 module.exports = router;
