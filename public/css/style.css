@@ -105,4 +105,9 @@ form {
     .app-wrapper {
         padding: 2rem 1rem;
     }
+
+    .btn-back {
+        left: 1rem;
+        top: 1.5rem;
+    }
 }
