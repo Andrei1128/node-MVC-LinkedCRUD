@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { validateAngajat, validateFirma } = require("../middleware/validators");
 
 const {
   getFirma,
@@ -14,9 +15,9 @@ const {
 router.get("/", getFirme);
 router.get("/:id", getFirma);
 router.get("/:id/add", getAddAngajat);
-router.post("/", addFirma);
-router.post("/:id/add", addAngajat);
-router.put("/:id", updateFirma);
+router.post("/", validateFirma, addFirma);
+router.post("/:id/add", validateAngajat, addAngajat);
+router.put("/:id", validateFirma, updateFirma);
 router.delete("/:id", deleteFirma);
 
 module.exports = router;
