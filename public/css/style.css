@@ -100,3 +100,9 @@ form {
 .top-space {
     margin-top: 3rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .app-wrapper {
+        padding: 2rem 1rem;
+    }
+}
