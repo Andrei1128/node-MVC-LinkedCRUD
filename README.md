@@ -1,4 +1,4 @@
-## Aplicatie cu 2 modele
+## Aplicatie MVC cu referinta in model
 In plus fata de proiectul anterior, in modelul firma am creat un field angajati ce accepta referinte de tip 'angajat'
 
 Astfel in firma putem avea mai multi angajati cu propriile lor operatii
